@@ -16,6 +16,14 @@ function App() {
     setText(data.slice(0, amount));
   };
 
+  const handleChange = (e) => {
+    // console.log(e.target.value);
+    setCount(e.target.value);
+  };
+  const handleKeyPress = (e) => {
+    if (e.charCode === 45) {
+      e.preventDefault();
+    }
   return (
     <section className="section-center">
       <h3>lorem ipsum paragraph generator</h3>
@@ -25,8 +33,10 @@ function App() {
           type="number"
           name="amount"
           id="amount"
+          min="0"
           value={count}
-          onChange={(e) => setCount(e.target.value)}
+          onKeyPress={handleKeyPress}
+          onChange={handleChange}
         />
         <button type="submit" className="btn">
           generate
